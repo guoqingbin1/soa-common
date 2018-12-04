@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+        <artifactId>soa-common</artifactId>
+        <groupId>soa-common</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+
+  <groupId>soa-common-service</groupId>
+  <artifactId>soa-common-service</artifactId>
+  <version>1.0.1-SNAPSHOT</version>
+
+  <name>soa-common-service</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <soa.dubbo.common.api.version>1.0.1-SNAPSHOT</soa.dubbo.common.api.version>
+  </properties>
+
+  <dependencies>
+  
+  		<dependency>
+			<groupId>com.dubbo.common</groupId>
+			<artifactId>soa-common-api</artifactId>
+			</dependency>
+		
+  </dependencies>
+
+  <build>
+		<plugins>
+            <plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                    <mainClass>com.dubbo.common.ProviderStart</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!-- 将所有的依赖jar包打包进 lib 文件夹里-->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+			</plugin>
+        </plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id><!--这个ID需要与你的release仓库的Repository ID一致 -->
+			<url>http://118.24.115.57:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id><!--这个ID需要与你的snapshots仓库的Repository ID一致 -->
+			<url>http://118.24.115.57:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>
